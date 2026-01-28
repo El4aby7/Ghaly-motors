@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "make": "Chevrolet",
+    "model": "Silverado 1500 Crew Cab",
+    "year": 2024,
+    "mileage": 15,
+    "price": 54200,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDhDmYbjT19ReS269mhxX0arwR9U2bN_UGJo_aCWSjWbxrliiDJT8e3uuejhbQBtV6MeOF8cCKVx9G06fy4jjAI6Uyc60qKsI2wKYSnXzagTZScdQqCTa8-OGn6PA6aZrR0zk8fEuziTPTeY-g0UF7SWJrmVN_xJmusgCD504Dtmpf0lafbIiQuuKldFwKwy_IKGHHzMaJ433hurE52mE1LabSWiPwVuiSzNbLdBqhIfjy-vS-qTuJocW8onHqMuW1mGAyZi0tx-sE",
+    "tags": ["Top Seller", "Utility Pro"],
+    "type": "Truck",
+    "specs": [
+      { "label": "Towing", "value": "13,300 lbs" },
+      { "label": "Cargo Space", "value": "89.1 cu ft" },
+      { "label": "Reliability", "value": "4.5/5" }
+    ]
+  },
+  {
+    "id": 2,
+    "make": "Porsche",
+    "model": "911 GT3 RS",
+    "year": 2024,
+    "mileage": 1240,
+    "price": 249900,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuA4zvRtz5nizh0JQlfkMuHIOBX-BVo_K_952CoCgllh5iiLizfmjKqA1waRpSAtoJ_jfMWkRYBqYvu_h_gjV-IvqMZhnB859zeKabZP0hIQs3LZkei_UYbo0GtsNakdi3nMdjCUD0OpiRER2PNTJhikeAGEjXrtQmZT9BApv9_geOzL9HxAx2sHJcqbIsUpElzGB-GLildShhPyeto9X44KRJE1acl3JSgOm_tDCXKHbtKa637Ezx_5mMMMGpUNXJHiyayrMwEP0vo",
+    "tags": ["Iconic"],
+    "type": "Coupe",
+    "specs": [
+      { "label": "HP", "value": "518" },
+      { "label": "0-60 MPH", "value": "3.0s" },
+      { "label": "Engine", "value": "4.0L H6" }
+    ]
+  },
+  {
+    "id": 3,
+    "make": "Honda",
+    "model": "Accord Hybrid",
+    "year": 2024,
+    "mileage": 0,
+    "price": 34800,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCpwqQuY6Qj9fACKIE1GyIGaYWCiedV3VT0sbMLex2pSUgm_Mp2y3QiTpBox_pqThMGrIchzBusEnF5wihxZSzS25lV7N7mtgRXBFwf6Azxa0K1KLEfGJFp4-Tih_dh_GLW4RdI7Gg2-FKCqqJrNNXCs7gfF0GKYvMMEcHFYzdy4Z6HiAXyUYvuDAk5YMNHe_sSNDwbuklZ0ZXUFqdvjWBxG22HIByxR22sVQ5ymHxHIYSLpIIki2loMHNzqNwi3dwJES2E1yoP7Ws",
+    "tags": ["Fuel Efficient", "Safety Pick+"],
+    "type": "Sedan",
+    "specs": [
+      { "label": "MPG (City)", "value": "51" },
+      { "label": "Safety Rating", "value": "5/5" },
+      { "label": "Drive", "value": "FWD" }
+    ]
+  },
+  {
+    "id": 4,
+    "make": "Ferrari",
+    "model": "F8 Tributo",
+    "year": 2023,
+    "mileage": 3120,
+    "price": 312500,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD5o0LQQ44M7pKdBMFgstssX24F1cSQBEMKYvpOtNkPkDsa8KYAQNvEeH5Ehie8NFa0Jf6ffmxZ092sUEAEpp8hwsCqpKE1ZWQLTmghx1iS7J3GS4IkSh1MemMb-BrdQRQV3mTfOClR29lIv_nEcHvaiWLScYNwZp_D-GKHaI0QD0okT3Tw_k24Pa1pn7rxDwn7K_Z-XDNUAz2nqpCh8HrVfl475FWaI6qO9qifXzh9L1o1i1-Co3aFkcFMj0avgJHEB7YPZ7Xog5Q",
+    "tags": ["Reserved"],
+    "type": "Coupe",
+    "specs": [
+      { "label": "HP", "value": "710" },
+      { "label": "0-60 MPH", "value": "2.9s" },
+      { "label": "Engine", "value": "3.9L V8" }
+    ]
+  },
+  {
+    "id": 5,
+    "make": "BMW",
+    "model": "X5 M Competition",
+    "year": 2024,
+    "mileage": 500,
+    "price": 125000,
+    "image": "https://images.unsplash.com/photo-1555215695-3004980adade?auto=format&fit=crop&q=80&w=800",
+    "tags": ["Luxury SUV"],
+    "type": "SUV",
+    "specs": [
+      { "label": "HP", "value": "617" },
+      { "label": "0-60 MPH", "value": "3.7s" },
+      { "label": "Seats", "value": "5" }
+    ]
+  },
+  {
+    "id": 6,
+    "make": "Toyota",
+    "model": "Camry TRD",
+    "year": 2024,
+    "mileage": 10,
+    "price": 33000,
+    "image": "https://images.unsplash.com/photo-1621007947382-bb3c3968e3bb?auto=format&fit=crop&q=80&w=800",
+    "tags": ["Reliable", "Sporty"],
+    "type": "Sedan",
+    "specs": [
+      { "label": "MPG", "value": "32" },
+      { "label": "HP", "value": "301" },
+      { "label": "Drive", "value": "FWD" }
+    ]
+  }
+]
