@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxe &amp; Lifestyle | Premium Automotive Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ea2a33",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#121212",
+                        "charcoal": "#1a1a1a",
+                        "metallic": "#e2e8f0"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .glass-effect {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(18, 18, 18, 0.3) 0%, rgba(18, 18, 18, 0.9) 100%);
+        }
+        .card-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.03), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+        .card-shine:hover::after {
+            left: 100%;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white selection:bg-primary/30">
+<nav class="sticky top-0 z-50 glass-effect">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3 text-metallic">
+<span class="material-symbols-outlined text-primary text-3xl">directions_car</span>
+<h2 class="text-xl font-black tracking-tighter uppercase">Luxe <span class="text-primary">Auto</span></h2>
+</div>
+<div class="hidden lg:flex items-center gap-8">
+<a class="text-metallic/80 hover:text-white text-sm font-semibold transition-colors" href="inventory.html">Inventory</a>
+<a class="text-metallic/80 hover:text-white text-sm font-semibold transition-colors" href="#">Offers</a>
+<a class="text-metallic/80 hover:text-white text-sm font-semibold transition-colors" href="#">Financing</a>
+<a class="text-metallic/80 hover:text-white text-sm font-semibold transition-colors" href="#">Services</a>
+<a class="text-metallic/80 hover:text-white text-sm font-semibold transition-colors" href="#">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-white/5 rounded-lg px-3 py-2 border border-white/10">
+<span class="material-symbols-outlined text-metallic/50 text-xl">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm placeholder:text-metallic/40 w-48" placeholder="Search models..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20">
+                Contact Us
+            </button>
+</div>
+</div>
+</nav>
+<section class="relative h-[85vh] w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Sleek black luxury sports car in studio lighting with reflections" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA01r5YPa6pJOEnsa06amMJ0hae4p3M0H1L4LLkGBOgRzlYFRD9I_EKodiUcbhvkt_0rEBF2MAMpA62RV9pUI2sMFUhBgNiymOJdOXHxHydTLtI6M9Nv4LqCVpGoRHQHWvbZaTL2tdDMOmysb9W-xJOP7Ughqt9P7SJpwRjXlvecOxsDKc1sMKRFSZHqPVOHeL-WVt0kSYPKZI2xVjPwQk-u04SHKDqTTR-elbBK7pWFRt8uoEJY_SRaaa9QW2PLPjI9aiy7gMRYoY");'>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative h-full max-w-7xl mx-auto px-6 flex flex-col items-center justify-center text-center">
+<span class="text-primary font-bold tracking-[0.3em] uppercase mb-4 text-sm">Elegance Meets Utility</span>
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight mb-8 uppercase">
+            Designed for<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40 text-glow">Every Drive</span>
+</h1>
+<p class="max-w-2xl text-metallic/70 text-lg md:text-xl mb-10 leading-relaxed">
+            From the pinnacle of performance to the gold standard of daily comfort. Discover our curated collection of luxury and practical vehicles.
+        </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="inventory.html" class="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-xl text-base font-bold transition-all flex items-center gap-2 group">
+                View Inventory
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-10 py-4 rounded-xl text-base font-bold transition-all border border-white/20">
+                Browse Deals
+            </button>
+</div>
+</div>
+</section>
+<main class="max-w-7xl mx-auto px-6 py-24">
+<div class="flex items-end justify-between mb-12 border-b border-white/5 pb-8">
+<div>
+<h2 class="text-primary text-sm font-bold tracking-widest uppercase mb-2">Curated Collection</h2>
+<h3 class="text-4xl font-black text-white">Featured Inventory</h3>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary border border-primary/20 rounded-lg">All Arrivals</button>
+<a class="text-metallic/60 hover:text-primary transition-colors flex items-center gap-2 font-bold text-sm" href="#">
+                EXPLORE ALL
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="group card-shine bg-charcoal rounded-2xl border border-white/5 hover:border-primary/30 transition-all duration-500 overflow-hidden">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Silver modern sedan in high-end studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjJtKk3Hyy48ZhoarpprCkBbD3d1Z2T_f4RnHuWmfMGS-WKbpvTTL0hCYbLSIyXdxB6kWedSmrFI1t9DC6-fxx3XeNhNIIyd-Li6FUzUog7r2exuxImR61Ds16bL9BCl273hvOQuRNA0KTTZvnu5cxNbyzZbg8iNmyE3gRigIyyo_ocmmZ0pRrY_JZ2fqvzXTfApTMKXG57Qz4hYMi2DUWP7eWQF5fbfTlBaBe-kGcra6gxQO-4dZ8k5IlLaO-ccrM7FYaaIBAI0k"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-white text-black text-[10px] font-black uppercase px-3 py-1 rounded-full">Practical Luxury</span>
+<span class="bg-emerald-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full">Top Safety Pick</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-metallic/40 text-xs font-bold uppercase tracking-wider mb-1">Daily Excellence Series</p>
+<h4 class="text-2xl font-black text-white">2024 Touring Sedan</h4>
+</div>
+<div class="text-right">
+<p class="text-primary text-2xl font-black">$31,500</p>
+<p class="text-[10px] text-metallic/30 font-bold uppercase">MSRP starting at</p>
+</div>
+</div>
+<div class="flex items-center justify-between mb-8 text-metallic/60 text-sm border-y border-white/5 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">eco</span>
+<span>42 Best-in-class MPG</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">security</span>
+<span>Active Safety+</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">smartphone</span>
+<span>Wireless Hub</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-white/5 hover:bg-white/10 text-white font-bold py-3 rounded-lg transition-colors border border-white/10">Build Your Own</button>
+<button class="flex-1 bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-primary/20">Schedule Drive</button>
+</div>
+</div>
+</div>
+<div class="group card-shine bg-charcoal rounded-2xl border border-white/5 hover:border-primary/30 transition-all duration-500 overflow-hidden">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Deep blue luxury flagship sedan interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARULu_e1kSTe7fWJrV0Gjp_eHtni-8O2nm1Ww-5q_e6KiWk3P2a-h7-BTHU-D8yc_tLCCTkaPJfPRFeEe8NIMbA2e05OnLYy6koqSAjPpw-ZB910K6ehaBquLIq3foHWR-xtIFcuhWT5_eebRw2_l7l3FXbEFS0jAChLs5tlBg9oLYCm40EFvklFc6x-r6PHWjn4EBk09NZZZm0gEa7I3LUZ3Bf1OGGL1WnQJPIDujgVOCTD3OMpBxDcxqEaaHZwRLaLhntVp4qMY"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary text-white text-[10px] font-black uppercase px-3 py-1 rounded-full">Flagship Edition</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-metallic/40 text-xs font-bold uppercase tracking-wider mb-1">Elite Performance</p>
+<h4 class="text-2xl font-black text-white">Phantom S-Class V12</h4>
+</div>
+<div class="text-right">
+<p class="text-primary text-2xl font-black">$189,000</p>
+<p class="text-[10px] text-metallic/30 font-bold uppercase">Executive Pricing</p>
+</div>
+</div>
+<div class="flex items-center justify-between mb-8 text-metallic/60 text-sm border-y border-white/5 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">speed</span>
+<span>0-60 in 3.4s</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">handyman</span>
+<span>Bespose Trim</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">hotel_class</span>
+<span>VIP Concierge</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-white/5 hover:bg-white/10 text-white font-bold py-3 rounded-lg transition-colors border border-white/10">Inquire Details</button>
+<button class="flex-1 bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-primary/20">Private Viewing</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<section class="bg-white/5 py-24">
+<div class="max-w-7xl mx-auto px-6">
+<h3 class="text-3xl font-black mb-12">Monthly Specials</h3>
+<div class="flex gap-6 overflow-x-auto pb-8 snap-x no-scrollbar">
+<div class="min-w-[400px] snap-start bg-charcoal p-8 rounded-2xl border border-white/10 hover:border-primary/40 transition-colors">
+<span class="text-emerald-500 font-bold text-xs tracking-tighter mb-4 block">PRACTICAL SAVINGS</span>
+<h4 class="text-xl font-bold mb-2">0.9% APR for 60 Months</h4>
+<p class="text-metallic/50 text-sm mb-6">On all 2024 Touring and Sport Utility models. The perfect time for your new daily driver.</p>
+<button class="text-white font-bold text-sm flex items-center gap-2 group">View Eligible Models <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">trending_flat</span></button>
+</div>
+<div class="min-w-[400px] snap-start bg-charcoal p-8 rounded-2xl border border-white/10 hover:border-primary/40 transition-colors">
+<span class="text-primary font-bold text-xs tracking-tighter mb-4 block">LUXURY LEASE</span>
+<h4 class="text-xl font-bold mb-2">$1,299/mo Special</h4>
+<p class="text-metallic/50 text-sm mb-6">Experience the Grand Tourer S with $0 down payment for qualified customers.</p>
+<button class="text-white font-bold text-sm flex items-center gap-2 group">Calculate Lease <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">trending_flat</span></button>
+</div>
+<div class="min-w-[400px] snap-start bg-charcoal p-8 rounded-2xl border border-white/10 hover:border-primary/40 transition-colors">
+<span class="text-primary font-bold text-xs tracking-tighter mb-4 block">COMPREHENSIVE CARE</span>
+<h4 class="text-xl font-bold mb-2">3 Years Coverage</h4>
+<p class="text-metallic/50 text-sm mb-6">3 years of complimentary scheduled maintenance on every new vehicle purchase this month.</p>
+<button class="text-white font-bold text-sm flex items-center gap-2 group">Learn More <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">trending_flat</span></button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-charcoal rounded-3xl overflow-hidden border border-white/5">
+<div class="p-12 lg:p-20 flex flex-col justify-center">
+<h3 class="text-4xl font-black mb-6 uppercase">Visit Our Showroom</h3>
+<p class="text-metallic/60 mb-10 text-lg">Our state-of-the-art facility features a full range of luxury escapes and practical solutions, supported by an expert consulting team.</p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<div>
+<h5 class="font-bold text-white">Regional Flagship</h5>
+<p class="text-metallic/50 text-sm">100 Luxury Way, Newport Beach, CA 92660</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">schedule</span>
+<div>
+<h5 class="font-bold text-white">Opening Hours</h5>
+<p class="text-metallic/50 text-sm">Mon - Sat: 9:00 AM - 8:00 PM</p>
+<p class="text-metallic/50 text-sm">Sun: 11:00 AM - 5:00 PM</p>
+</div>
+</div>
+</div>
+</div>
+<div class="h-[500px] lg:h-auto min-h-[400px] bg-white/5 relative">
+<div class="absolute inset-0 grayscale opacity-70 contrast-125" data-location="Newport Beach, CA" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7GjIfKqomeFiw2votNHibCrZLWvXEXT9RqubrQDjfxfcbyEs0gw6gorRdE4y6T0rc8lGXFQ3hks8qTfYyZuOWtyAHSPXh_1ydCgBA4HWbNtkZEZlnGsVE8ldkXcsNepF9hZJSwyKym5qojf7WjUgWaqYoXAq7ONU-R2LWWZTpPjY9ZbTHq7i29xy0JFapRGCXA5460NHsqKvqxt9HEApYqdTymgZHTyGgqKVpTYJBEWiXUqLdWS-BpZQIMwwEFReuxqfDXf2p8mE"); background-size: cover;'></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-12 h-12 bg-primary rounded-full animate-ping absolute"></div>
+<div class="w-8 h-8 bg-primary rounded-full relative shadow-lg shadow-primary/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-base">directions_car</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-black py-20 border-t border-white/10">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-3 text-metallic mb-8">
+<span class="material-symbols-outlined text-primary text-3xl">directions_car</span>
+<h2 class="text-xl font-black tracking-tighter uppercase">Luxe <span class="text-primary">Auto</span></h2>
+</div>
+<p class="text-metallic/40 max-w-sm mb-8 leading-relaxed">Defining the standard of excellence across all automotive segments. From high-performance exotics to the industry's most reliable daily drivers.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-metallic/40 hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-metallic/40 hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-metallic/40 hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6">Quick Links</h5>
+<ul class="space-y-4 text-metallic/40 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">New Inventory</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pre-Owned</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Finance Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Value Your Trade</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Service Specials</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6">Newsletter</h5>
+<p class="text-metallic/40 text-xs mb-4">Get the latest arrivals and exclusive seasonal offers.</p>
+<div class="flex gap-2">
+<input class="bg-white/5 border-white/10 rounded-lg text-sm w-full focus:ring-primary focus:border-primary border-none" placeholder="Email address" type="email"/>
+<button class="bg-primary p-2 rounded-lg"><span class="material-symbols-outlined text-white">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 pt-12 mt-12 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] text-metallic/20 uppercase tracking-widest font-bold">
+<p>© 2024 Luxe Auto Group. All Rights Reserved.</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+<a href="#">Accessibility</a>
+</div>
+</div>
+</footer>
+
+</body></html>
