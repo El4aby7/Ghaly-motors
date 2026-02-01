@@ -2,10 +2,13 @@
 let allVehicles = [];
 let activeMakeFilter = null;
 let selectedVehicle = null;
+let compareList = [];
+let favorites = JSON.parse(localStorage.getItem('ghalyMotorsFavorites')) || [];
 
 document.addEventListener('DOMContentLoaded', () => {
     loadVehicles();
     setupEventListeners();
+    createModals();
 });
 
 async function loadVehicles() {
@@ -28,7 +31,10 @@ function renderVehicles(vehicles) {
         countElement.innerHTML = `<strong class="text-slate-900 dark:text-white">${vehicles.length}</strong> Vehicles Available`;
     }
 
-    grid.innerHTML = vehicles.map(vehicle => `
+    grid.innerHTML = vehicles.map(vehicle => {
+        const isFavorite = favorites.includes(vehicle.id);
+        const isCompared = compareList.includes(vehicle.id);
+        return `
         <div class="group bg-white dark:bg-surface-dark rounded-xl overflow-hidden border border-slate-200 dark:border-metallic hover:shadow-2xl hover:shadow-primary/10 transition-all cursor-pointer" onclick="openVehicleDetails(${vehicle.id})">
             <div class="relative h-64 overflow-hidden">
                 <img alt="${vehicle.make} ${vehicle.model}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="${vehicle.thumbnail}"/>
@@ -61,17 +67,18 @@ function renderVehicles(vehicles) {
                     `).join('')}
                 </div>
                 <div class="flex items-center justify-between py-1">
-                    <label class="flex items-center gap-2 cursor-pointer group/toggle">
-                        <div class="relative w-8 h-4 bg-slate-200 dark:bg-metallic rounded-full transition-colors group-hover/toggle:bg-action-blue/30">
-                            <div class="absolute left-0.5 top-0.5 size-3 bg-white dark:bg-neutral-400 rounded-full transition-all"></div>
+                    <label class="flex items-center gap-2 cursor-pointer group/toggle" onclick="event.stopPropagation()">
+                        <input type="checkbox" class="hidden compare-checkbox" data-id="${vehicle.id}" ${isCompared ? 'checked' : ''} onchange="toggleCompare(${vehicle.id})"/>
+                        <div class="relative w-8 h-4 bg-slate-200 dark:bg-metallic rounded-full transition-colors group-hover/toggle:bg-action-blue/30 ${isCompared ? 'bg-primary' : ''}">
+                            <div class="absolute left-0.5 top-0.5 size-3 bg-white dark:bg-neutral-400 rounded-full transition-all ${isCompared ? 'translate-x-4' : ''}"></div>
                         </div>
                         <span class="text-xs font-bold text-slate-500 uppercase">Compare</span>
                     </label>
                     <div class="flex gap-2">
-                        <button class="p-2 rounded-lg bg-slate-100 dark:bg-metallic hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined text-lg">favorite</span>
+                        <button class="p-2 rounded-lg bg-slate-100 dark:bg-metallic hover:text-primary transition-colors ${isFavorite ? 'text-red-500' : ''}" onclick="event.stopPropagation(); toggleFavorite(${vehicle.id})" title="${isFavorite ? 'Remove from favorites' : 'Add to favorites'}">
+                            <span class="material-symbols-outlined text-lg">${isFavorite ? 'favorite' : 'favorite'}</span>
                         </button>
-                        <button class="p-2 rounded-lg bg-slate-100 dark:bg-metallic hover:text-action-blue transition-colors">
+                        <button class="p-2 rounded-lg bg-slate-100 dark:bg-metallic hover:text-action-blue transition-colors" onclick="event.stopPropagation(); shareVehicle(${vehicle.id})" title="Share this car">
                             <span class="material-symbols-outlined text-lg">share</span>
                         </button>
                     </div>
@@ -80,13 +87,14 @@ function renderVehicles(vehicles) {
                     <button class="w-full bg-action-blue text-white py-3 rounded-lg text-xs font-black uppercase tracking-widest hover:brightness-110 shadow-lg shadow-action-blue/20 transition-all" onclick="event.stopPropagation(); openVehicleDetails(${vehicle.id})">
                         View Details
                     </button>
-                    <button class="w-full border-2 border-slate-200 dark:border-metallic hover:border-primary py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all" onclick="event.stopPropagation()">
+                    <button class="w-full border-2 border-slate-200 dark:border-metallic hover:border-primary py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all" onclick="event.stopPropagation(); openTestDriveModal(${vehicle.id})" title="Schedule a test drive">
                         Test Drive
                     </button>
                 </div>
             </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
 }
 
 function openVehicleDetails(vehicleId) {
@@ -175,12 +183,24 @@ function updateModalContent() {
             </div>
 
             <!-- Action Buttons -->
-            <div class="flex gap-3">
-                <button class="flex-1 bg-action-blue text-white py-4 rounded-lg font-bold uppercase tracking-widest hover:brightness-110 shadow-lg shadow-action-blue/20 transition-all">
+            <div class="flex gap-3 mb-6">
+                <button class="flex-1 bg-action-blue text-white py-4 rounded-lg font-bold uppercase tracking-widest hover:brightness-110 shadow-lg shadow-action-blue/20 transition-all" onclick="event.stopPropagation(); openTestDriveModal(${v.id})">
                     Schedule Test Drive
                 </button>
-                <button class="flex-1 border-2 border-slate-200 dark:border-metallic py-4 rounded-lg font-bold uppercase tracking-widest hover:border-primary transition-all">
+                <button class="flex-1 border-2 border-slate-200 dark:border-metallic py-4 rounded-lg font-bold uppercase tracking-widest hover:border-primary transition-all" onclick="event.stopPropagation(); openContactModal(${v.id})">
                     Contact Dealer
+                </button>
+            </div>
+
+            <!-- Additional Actions -->
+            <div class="flex gap-2 pb-6">
+                <button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg bg-slate-100 dark:bg-metallic hover:bg-primary hover:text-white transition-colors font-bold" onclick="event.stopPropagation(); toggleFavorite(${v.id})">
+                    <span class="material-symbols-outlined">${favorites.includes(v.id) ? 'favorite' : 'favorite'}</span>
+                    ${favorites.includes(v.id) ? 'Saved' : 'Save'}
+                </button>
+                <button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg bg-slate-100 dark:bg-metallic hover:bg-primary hover:text-white transition-colors font-bold" onclick="event.stopPropagation(); shareVehicle(${v.id})">
+                    <span class="material-symbols-outlined">share</span>
+                    Share
                 </button>
             </div>
         </div>
@@ -193,6 +213,329 @@ function closeVehicleModal() {
         modal.classList.add('hidden');
         document.body.style.overflow = 'auto';
     }
+}
+
+// Favorites functionality
+function toggleFavorite(vehicleId) {
+    const index = favorites.indexOf(vehicleId);
+    if (index > -1) {
+        favorites.splice(index, 1);
+    } else {
+        favorites.push(vehicleId);
+    }
+    localStorage.setItem('ghalyMotorsFavorites', JSON.stringify(favorites));
+    renderVehicles(allVehicles);
+    
+    // Show toast notification
+    showToast(index > -1 ? 'Removed from favorites' : 'Added to favorites');
+}
+
+// Compare functionality
+function toggleCompare(vehicleId) {
+    const index = compareList.indexOf(vehicleId);
+    if (index > -1) {
+        compareList.splice(index, 1);
+    } else {
+        if (compareList.length >= 3) {
+            showToast('You can compare up to 3 vehicles', 'error');
+            return;
+        }
+        compareList.push(vehicleId);
+    }
+    renderVehicles(allVehicles);
+    updateCompareButton();
+    showToast(index > -1 ? 'Removed from comparison' : 'Added to comparison');
+}
+
+function updateCompareButton() {
+    const compareBtn = document.getElementById('compare-btn');
+    if (compareBtn) {
+        compareBtn.textContent = `Compare (${compareList.length})`;
+        compareBtn.disabled = compareList.length < 2;
+    }
+}
+
+function openCompareModal() {
+    if (compareList.length < 2) {
+        showToast('Select at least 2 vehicles to compare', 'error');
+        return;
+    }
+    
+    const vehiclesToCompare = allVehicles.filter(v => compareList.includes(v.id));
+    const modal = document.getElementById('compare-modal') || createCompareModal();
+    
+    const allSpecs = [...new Set(vehiclesToCompare.flatMap(v => v.specs.map(s => s.label)))];
+    
+    let compareHTML = `
+        <div class="p-6">
+            <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-6">Compare Vehicles</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b-2 border-slate-200 dark:border-metallic">
+                            <th class="text-left p-4 font-black text-slate-900 dark:text-white">Feature</th>
+                            ${vehiclesToCompare.map(v => `
+                                <th class="text-left p-4">
+                                    <div class="font-black text-slate-900 dark:text-white">${v.make} ${v.model}</div>
+                                    <div class="text-sm text-primary font-bold">L.E${v.price.toLocaleString()}</div>
+                                </th>
+                            `).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${allSpecs.map(specLabel => `
+                            <tr class="border-b border-slate-100 dark:border-metallic hover:bg-slate-50 dark:hover:bg-metallic/30">
+                                <td class="p-4 font-bold text-slate-700 dark:text-slate-300">${specLabel}</td>
+                                ${vehiclesToCompare.map(v => {
+                                    const spec = v.specs.find(s => s.label === specLabel);
+                                    return `<td class="p-4 text-slate-600 dark:text-slate-400">${spec ? spec.value : 'N/A'}</td>`;
+                                }).join('')}
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-6 flex gap-3">
+                <button class="flex-1 bg-action-blue text-white py-3 rounded-lg font-bold" onclick="clearCompare()">Clear Comparison</button>
+                <button class="flex-1 border-2 border-action-blue text-action-blue py-3 rounded-lg font-bold" onclick="closeCompareModal()">Close</button>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('compare-content').innerHTML = compareHTML;
+    modal.classList.remove('hidden');
+}
+
+function createCompareModal() {
+    const modal = document.createElement('div');
+    modal.id = 'compare-modal';
+    modal.className = 'hidden fixed inset-0 z-50 overflow-hidden';
+    modal.innerHTML = `
+        <div class="fixed inset-0 bg-black/30 backdrop-blur-sm" onclick="closeCompareModal()"></div>
+        <div class="fixed right-0 top-0 h-full w-full md:w-2/3 lg:w-1/2 bg-white dark:bg-surface-dark overflow-y-auto shadow-2xl">
+            <button onclick="closeCompareModal()" class="sticky top-4 right-4 p-2 hover:bg-slate-100 dark:hover:bg-metallic rounded-lg float-right">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div id="compare-content" class="clear-both"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    return modal;
+}
+
+function closeCompareModal() {
+    const modal = document.getElementById('compare-modal');
+    if (modal) modal.classList.add('hidden');
+}
+
+function clearCompare() {
+    compareList = [];
+    renderVehicles(allVehicles);
+    updateCompareButton();
+    closeCompareModal();
+    showToast('Comparison cleared');
+}
+
+// Share functionality
+function shareVehicle(vehicleId) {
+    const vehicle = allVehicles.find(v => v.id === vehicleId);
+    if (!vehicle) return;
+    
+    const shareText = `Check out this ${vehicle.year} ${vehicle.make} ${vehicle.model} for L.E${vehicle.price.toLocaleString()} at Ghaly Motors!`;
+    const shareUrl = `${window.location.origin}${window.location.pathname}?car=${vehicleId}`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: `${vehicle.make} ${vehicle.model}`,
+            text: shareText,
+            url: shareUrl
+        }).catch(err => console.log('Error sharing:', err));
+    } else {
+        // Fallback: Copy to clipboard
+        const fullText = `${shareText}\n${shareUrl}`;
+        navigator.clipboard.writeText(fullText).then(() => {
+            showToast('Link copied to clipboard!');
+        });
+    }
+}
+
+// Test Drive modal
+function openTestDriveModal(vehicleId) {
+    selectedVehicle = allVehicles.find(v => v.id === vehicleId);
+    const modal = document.getElementById('test-drive-modal') || createTestDriveModal();
+    
+    const testDriveForm = document.getElementById('test-drive-form');
+    if (testDriveForm) {
+        testDriveForm.innerHTML = `
+            <div class="p-6">
+                <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-2">Schedule Test Drive</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-6">${selectedVehicle.make} ${selectedVehicle.model} (${selectedVehicle.year})</p>
+                
+                <form onsubmit="submitTestDrive(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Full Name</label>
+                        <input type="text" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-metallic dark:bg-metallic/30 dark:text-white focus:outline-none focus:border-primary" placeholder="Your name"/>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Email</label>
+                        <input type="email" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-metallic dark:bg-metallic/30 dark:text-white focus:outline-none focus:border-primary" placeholder="your@email.com"/>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Phone</label>
+                        <input type="tel" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-metallic dark:bg-metallic/30 dark:text-white focus:outline-none focus:border-primary" placeholder="Your phone number"/>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Preferred Date</label>
+                        <input type="date" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-metallic dark:bg-metallic/30 dark:text-white focus:outline-none focus:border-primary"/>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Preferred Time</label>
+                        <input type="time" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-metallic dark:bg-metallic/30 dark:text-white focus:outline-none focus:border-primary"/>
+                    </div>
+                    
+                    <div class="flex gap-3 pt-4">
+                        <button type="submit" class="flex-1 bg-action-blue text-white py-3 rounded-lg font-bold hover:brightness-110 transition-all">
+                            Confirm Booking
+                        </button>
+                        <button type="button" onclick="closeTestDriveModal()" class="flex-1 border-2 border-slate-300 dark:border-metallic py-3 rounded-lg font-bold">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        `;
+    }
+    
+    modal.classList.remove('hidden');
+}
+
+function createTestDriveModal() {
+    const modal = document.createElement('div');
+    modal.id = 'test-drive-modal';
+    modal.className = 'hidden fixed inset-0 z-50 overflow-hidden';
+    modal.innerHTML = `
+        <div class="fixed inset-0 bg-black/30 backdrop-blur-sm" onclick="closeTestDriveModal()"></div>
+        <div class="fixed right-0 top-0 h-full w-full md:w-2/3 lg:w-1/2 bg-white dark:bg-surface-dark overflow-y-auto shadow-2xl">
+            <button onclick="closeTestDriveModal()" class="sticky top-4 right-4 p-2 hover:bg-slate-100 dark:hover:bg-metallic rounded-lg float-right">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div id="test-drive-form" class="clear-both"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    return modal;
+}
+
+function submitTestDrive(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    showToast('Test drive scheduled! We will contact you soon.');
+    closeTestDriveModal();
+}
+
+function closeTestDriveModal() {
+    const modal = document.getElementById('test-drive-modal');
+    if (modal) modal.classList.add('hidden');
+}
+
+// Contact Dealer modal
+function openContactModal(vehicleId) {
+    selectedVehicle = allVehicles.find(v => v.id === vehicleId);
+    const modal = document.getElementById('contact-modal') || createContactModal();
+    
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.innerHTML = `
+            <div class="p-6">
+                <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-2">Contact Dealer</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-6">${selectedVehicle.make} ${selectedVehicle.model} (${selectedVehicle.year})</p>
+                
+                <form onsubmit="submitContact(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Full Name</label>
+                        <input type="text" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-metallic dark:bg-metallic/30 dark:text-white focus:outline-none focus:border-primary" placeholder="Your name"/>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Email</label>
+                        <input type="email" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-metallic dark:bg-metallic/30 dark:text-white focus:outline-none focus:border-primary" placeholder="your@email.com"/>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Phone</label>
+                        <input type="tel" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-metallic dark:bg-metallic/30 dark:text-white focus:outline-none focus:border-primary" placeholder="Your phone number"/>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Message</label>
+                        <textarea required rows="4" class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-metallic dark:bg-metallic/30 dark:text-white focus:outline-none focus:border-primary" placeholder="Your message..."></textarea>
+                    </div>
+                    
+                    <div class="flex gap-3 pt-4">
+                        <button type="submit" class="flex-1 bg-action-blue text-white py-3 rounded-lg font-bold hover:brightness-110 transition-all">
+                            Send Message
+                        </button>
+                        <button type="button" onclick="closeContactModal()" class="flex-1 border-2 border-slate-300 dark:border-metallic py-3 rounded-lg font-bold">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        `;
+    }
+    
+    modal.classList.remove('hidden');
+}
+
+function createContactModal() {
+    const modal = document.createElement('div');
+    modal.id = 'contact-modal';
+    modal.className = 'hidden fixed inset-0 z-50 overflow-hidden';
+    modal.innerHTML = `
+        <div class="fixed inset-0 bg-black/30 backdrop-blur-sm" onclick="closeContactModal()"></div>
+        <div class="fixed right-0 top-0 h-full w-full md:w-2/3 lg:w-1/2 bg-white dark:bg-surface-dark overflow-y-auto shadow-2xl">
+            <button onclick="closeContactModal()" class="sticky top-4 right-4 p-2 hover:bg-slate-100 dark:hover:bg-metallic rounded-lg float-right">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div id="contact-form" class="clear-both"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    return modal;
+}
+
+function submitContact(event) {
+    event.preventDefault();
+    showToast('Message sent! We will contact you soon.');
+    closeContactModal();
+}
+
+function closeContactModal() {
+    const modal = document.getElementById('contact-modal');
+    if (modal) modal.classList.add('hidden');
+}
+
+// Toast notifications
+function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `fixed bottom-6 right-6 px-6 py-4 rounded-lg text-white font-bold z-50 animate-in fade-in ${type === 'error' ? 'bg-red-500' : 'bg-emerald-500'}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+// Create modals on load
+function createModals() {
+    createCompareModal();
+    createTestDriveModal();
+    createContactModal();
 }
 
 
