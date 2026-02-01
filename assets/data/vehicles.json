@@ -1,98 +1,126 @@
 [
   {
     "id": 1,
-    "make": "Chevrolet",
-    "model": "Silverado 1500 Crew Cab",
-    "year": 2024,
-    "mileage": 15,
-    "price": 54200,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDhDmYbjT19ReS269mhxX0arwR9U2bN_UGJo_aCWSjWbxrliiDJT8e3uuejhbQBtV6MeOF8cCKVx9G06fy4jjAI6Uyc60qKsI2wKYSnXzagTZScdQqCTa8-OGn6PA6aZrR0zk8fEuziTPTeY-g0UF7SWJrmVN_xJmusgCD504Dtmpf0lafbIiQuuKldFwKwy_IKGHHzMaJ433hurE52mE1LabSWiPwVuiSzNbLdBqhIfjy-vS-qTuJocW8onHqMuW1mGAyZi0tx-sE",
-    "tags": ["Top Seller", "Utility Pro"],
-    "type": "Truck",
+    "make": "BMW",
+    "model": "X3 2018",
+    "year": 2018,
+    "mileage": 45000,
+    "price": 42500,
+    "type": "SUV",
+    "thumbnail": "assets/images/bmw-x3-2018/Cars.jpg",
+    "images": [
+      "assets/images/bmw-x3-2018/Cars.jpg",
+      "assets/images/bmw-x3-2018/Cars (1).jpg",
+      "assets/images/bmw-x3-2018/Cars (2).jpg",
+      "assets/images/bmw-x3-2018/Cars (3).jpg"
+    ],
+    "tags": ["Luxury SUV", "AWD"],
     "specs": [
-      { "label": "Towing", "value": "13,300 lbs" },
-      { "label": "Cargo Space", "value": "89.1 cu ft" },
-      { "label": "Reliability", "value": "4.5/5" }
+      { "label": "HP", "value": "248" },
+      { "label": "0-60 MPH", "value": "6.1s" },
+      { "label": "Drive", "value": "AWD" },
+      { "label": "Seats", "value": "5" },
+      { "label": "Cargo Space", "value": "28.7 cu ft" },
+      { "label": "Fuel Type", "value": "Gasoline" }
     ]
   },
   {
     "id": 2,
-    "make": "Porsche",
-    "model": "911 GT3 RS",
-    "year": 2024,
-    "mileage": 1240,
-    "price": 249900,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuA4zvRtz5nizh0JQlfkMuHIOBX-BVo_K_952CoCgllh5iiLizfmjKqA1waRpSAtoJ_jfMWkRYBqYvu_h_gjV-IvqMZhnB859zeKabZP0hIQs3LZkei_UYbo0GtsNakdi3nMdjCUD0OpiRER2PNTJhikeAGEjXrtQmZT9BApv9_geOzL9HxAx2sHJcqbIsUpElzGB-GLildShhPyeto9X44KRJE1acl3JSgOm_tDCXKHbtKa637Ezx_5mMMMGpUNXJHiyayrMwEP0vo",
-    "tags": ["Iconic"],
-    "type": "Coupe",
+    "make": "BMW",
+    "model": "x6 2025",
+    "year": 2025,
+    "mileage": 120,
+    "price": 89900,
+    "type": "SUV",
+    "thumbnail": "assets/images/bmw-x6-2025/Cars.jpg",
+    "images": [
+      "assets/images/bmw-x6-2025/Cars.jpg",
+      "assets/images/bmw-x6-2025/Cars (1).jpg",
+      "assets/images/bmw-x6-2025/Cars (2).jpg",
+      "assets/images/bmw-x6-2025/Cars (3).jpg"
+    ],
+    "tags": ["Latest Model", "Performance SUV"],
     "specs": [
-      { "label": "HP", "value": "518" },
-      { "label": "0-60 MPH", "value": "3.0s" },
-      { "label": "Engine", "value": "4.0L H6" }
+      { "label": "HP", "value": "503" },
+      { "label": "0-60 MPH", "value": "3.9s" },
+      { "label": "Drive", "value": "AWD" },
+      { "label": "Seats", "value": "5" },
+      { "label": "Cargo Space", "value": "29.0 cu ft" },
+      { "label": "Fuel Type", "value": "Gasoline" }
     ]
   },
   {
     "id": 3,
-    "make": "Honda",
-    "model": "Accord Hybrid",
-    "year": 2024,
-    "mileage": 0,
-    "price": 34800,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCpwqQuY6Qj9fACKIE1GyIGaYWCiedV3VT0sbMLex2pSUgm_Mp2y3QiTpBox_pqThMGrIchzBusEnF5wihxZSzS25lV7N7mtgRXBFwf6Azxa0K1KLEfGJFp4-Tih_dh_GLW4RdI7Gg2-FKCqqJrNNXCs7gfF0GKYvMMEcHFYzdy4Z6HiAXyUYvuDAk5YMNHe_sSNDwbuklZ0ZXUFqdvjWBxG22HIByxR22sVQ5ymHxHIYSLpIIki2loMHNzqNwi3dwJES2E1yoP7Ws",
-    "tags": ["Fuel Efficient", "Safety Pick+"],
+    "make": "BYD",
+    "model": "F3 2022",
+    "year": 2022,
+    "mileage": 28000,
+    "price": 15800,
     "type": "Sedan",
+    "thumbnail": "assets/images/byd-f3-2022/Cars.jpg",
+    "images": [
+      "assets/images/byd-f3-2022/Cars.jpg",
+      "assets/images/byd-f3-2022/Cars (1).jpg",
+      "assets/images/byd-f3-2022/Cars (2).jpg"
+    ],
+    "tags": ["Budget Friendly", "Reliable"],
     "specs": [
-      { "label": "MPG (City)", "value": "51" },
-      { "label": "Safety Rating", "value": "5/5" },
-      { "label": "Drive", "value": "FWD" }
+      { "label": "HP", "value": "113" },
+      { "label": "0-60 MPH", "value": "10.5s" },
+      { "label": "Drive", "value": "FWD" },
+      { "label": "Seats", "value": "5" },
+      { "label": "Cargo Space", "value": "420 L" },
+      { "label": "Fuel Type", "value": "Gasoline" }
     ]
   },
   {
     "id": 4,
-    "make": "Ferrari",
-    "model": "F8 Tributo",
-    "year": 2023,
-    "mileage": 3120,
-    "price": 312500,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD5o0LQQ44M7pKdBMFgstssX24F1cSQBEMKYvpOtNkPkDsa8KYAQNvEeH5Ehie8NFa0Jf6ffmxZ092sUEAEpp8hwsCqpKE1ZWQLTmghx1iS7J3GS4IkSh1MemMb-BrdQRQV3mTfOClR29lIv_nEcHvaiWLScYNwZp_D-GKHaI0QD0okT3Tw_k24Pa1pn7rxDwn7K_Z-XDNUAz2nqpCh8HrVfl475FWaI6qO9qifXzh9L1o1i1-Co3aFkcFMj0avgJHEB7YPZ7Xog5Q",
-    "tags": ["Reserved"],
-    "type": "Coupe",
+    "make": "Land Rover",
+    "model": "Range Rover 2017",
+    "year": 2017,
+    "mileage": 38000,
+    "price": 68900,
+    "type": "SUV",
+    "thumbnail": "assets/images/land-rover-range-rover-2017/Cars.jpg",
+    "images": [
+      "assets/images/land-rover-range-rover-2017/Cars.jpg",
+      "assets/images/land-rover-range-rover-2017/Cars (1).jpg",
+      "assets/images/land-rover-range-rover-2017/Cars (2).jpg",
+      "assets/images/land-rover-range-rover-2017/Cars (3).jpg"
+    ],
+    "tags": ["Premium", "Off-Road"],
     "specs": [
-      { "label": "HP", "value": "710" },
-      { "label": "0-60 MPH", "value": "2.9s" },
-      { "label": "Engine", "value": "3.9L V8" }
+      { "label": "HP", "value": "340" },
+      { "label": "0-60 MPH", "value": "5.2s" },
+      { "label": "Drive", "value": "AWD" },
+      { "label": "Seats", "value": "5" },
+      { "label": "Cargo Space", "value": "74.6 cu ft" },
+      { "label": "Fuel Type", "value": "Gasoline" }
     ]
   },
   {
     "id": 5,
-    "make": "BMW",
-    "model": "X5 M Competition",
-    "year": 2024,
-    "mileage": 500,
-    "price": 125000,
-    "image": "https://images.unsplash.com/photo-1555215695-3004980adade?auto=format&fit=crop&q=80&w=800",
-    "tags": ["Luxury SUV"],
-    "type": "SUV",
-    "specs": [
-      { "label": "HP", "value": "617" },
-      { "label": "0-60 MPH", "value": "3.7s" },
-      { "label": "Seats", "value": "5" }
-    ]
-  },
-  {
-    "id": 6,
-    "make": "Toyota",
-    "model": "Camry TRD",
-    "year": 2024,
-    "mileage": 10,
-    "price": 33000,
-    "image": "https://images.unsplash.com/photo-1621007947382-bb3c3968e3bb?auto=format&fit=crop&q=80&w=800",
-    "tags": ["Reliable", "Sporty"],
+    "make": "Mercedes-Benz",
+    "model": "E200 2021",
+    "year": 2021,
+    "mileage": 32000,
+    "price": 52400,
     "type": "Sedan",
+    "thumbnail": "assets/images/mercedes-e200-2021/Cars.jpg",
+    "images": [
+      "assets/images/mercedes-e200-2021/Cars.jpg",
+      "assets/images/mercedes-e200-2021/Cars (1).jpg",
+      "assets/images/mercedes-e200-2021/Cars (2).jpg",
+      "assets/images/mercedes-e200-2021/Cars (3).jpg"
+    ],
+    "tags": ["Luxury Sedan", "Elegant"],
     "specs": [
-      { "label": "MPG", "value": "32" },
-      { "label": "HP", "value": "301" },
-      { "label": "Drive", "value": "FWD" }
+      { "label": "HP", "value": "184" },
+      { "label": "0-60 MPH", "value": "8.5s" },
+      { "label": "Drive", "value": "RWD" },
+      { "label": "Seats", "value": "5" },
+      { "label": "Cargo Space", "value": "20.8 cu ft" },
+      { "label": "Fuel Type", "value": "Gasoline" }
     ]
   }
 ]
