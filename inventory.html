@@ -53,9 +53,9 @@
 <div class="hidden md:flex items-center gap-6">
 <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">Home</a>
 <a class="text-sm font-semibold hover:text-primary transition-colors text-primary" href="inventory.html">Inventory</a>
-<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Services</a>
-<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Finance</a>
-<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Sell</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="services.html">Services</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="financing.html">Financing</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="contact.html">Contact</a>
 </div>
 </div>
 <div class="flex-1 max-w-md hidden xl:block">
@@ -175,6 +175,7 @@
 <select class="bg-transparent border-none text-sm font-bold focus:ring-0 cursor-pointer">
 <option>Sort by: Popularity</option>
 <option>Price: Low to High</option>
+<option>Price: High to Low</option>
 <option>Fuel Economy: Best</option>
 <option>Reliability: Highest</option>
 </select>
@@ -203,13 +204,8 @@
 <div class="max-w-[1440px] mx-auto flex items-center justify-between">
 <div class="flex items-center gap-6 overflow-x-auto">
 <div class="flex items-center gap-3">
-<div class="size-12 rounded bg-slate-200 dark:bg-metallic overflow-hidden border border-action-blue">
-<img alt="Ferrari F8 thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi9GvU9drsLlH3waEe7KZpYjgtWJkc4D-rOx5CtfDglGC6peBmX_6iqkWVhxiMN8kEJCM-OyxyBbwcACoWdk-Lwaaq7XNvTjAn32WXXQO4KxZ0z6uvTpWH-ncN6SEUeEzZ7S9bfbX9DjLO94TMIPXFpI1SlggkAzdPDF0dzQA6kivMDcwClGKyU7GoB6-8lX2yCiP0YsGZDbz-LK6car-JEP4H4YPcOex0oCCNb4YoiPirp2_rJvqj-tbNPRYTZnx7feuMr8Uu4kI"/>
-</div>
-<div>
-<p class="text-[10px] font-black uppercase text-action-blue">Selected</p>
-<p class="text-xs font-bold truncate max-w-[120px]">Ferrari F8 Tributo</p>
-</div>
+<div class="size-12 rounded border-2 border-dashed border-slate-300 dark:border-metallic flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-sm">add</span>
 </div>
 <div class="size-12 rounded border-2 border-dashed border-slate-300 dark:border-metallic flex items-center justify-center text-slate-400">
 <span class="material-symbols-outlined text-sm">add</span>
@@ -217,12 +213,13 @@
 <div class="size-12 rounded border-2 border-dashed border-slate-300 dark:border-metallic flex items-center justify-center text-slate-400">
 <span class="material-symbols-outlined text-sm">add</span>
 </div>
-<p class="text-xs font-medium text-slate-500 hidden md:block">Compare up to 3 vehicles - from track-ready supercars to reliable daily trucks.</p>
+</div>
+<p class="text-xs font-medium text-slate-500 hidden md:block">Compare up to 3 vehicles - select vehicles to compare</p>
 </div>
 <div class="flex items-center gap-4">
-<button class="text-slate-500 text-xs font-bold uppercase hover:text-slate-900 dark:hover:text-white">Clear</button>
-<button class="bg-action-blue text-white px-8 py-3 rounded-lg text-xs font-black uppercase tracking-widest hover:brightness-110 shadow-lg shadow-action-blue/20">
-                Compare Now (1)
+<button class="text-slate-500 text-xs font-bold uppercase hover:text-slate-900 dark:hover:text-white transition-colors" onclick="clearCompare()">Clear</button>
+<button id="compare-bottom-btn" class="bg-action-blue text-white px-8 py-3 rounded-lg text-xs font-black uppercase tracking-widest hover:brightness-110 shadow-lg shadow-action-blue/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed" onclick="openCompareModal()" disabled>
+                Compare Now (0)
             </button>
 </div>
 </div>

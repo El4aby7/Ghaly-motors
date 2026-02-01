@@ -97,6 +97,9 @@ function renderVehicles(vehicles) {
         </div>
     `;
     }).join('');
+
+    // Update compare UI after rendering vehicles
+    updateCompareUI();
 }
 
 function openVehicleDetails(vehicleId) {
@@ -244,9 +247,63 @@ function toggleCompare(vehicleId) {
         }
         compareList.push(vehicleId);
     }
+    updateCompareUI();
     renderVehicles(allVehicles);
     updateCompareButton();
     showToast(index > -1 ? 'Removed from comparison' : 'Added to comparison');
+}
+
+function updateCompareUI() {
+    const compareContainer = document.querySelector('.flex.items-center.gap-6.overflow-x-auto');
+    if (!compareContainer) return;
+
+    // Get all the slot divs in the first child container
+    const slotsContainer = compareContainer.querySelector('.flex.items-center.gap-3');
+    if (!slotsContainer) return;
+
+    // Remove all existing vehicle cards
+    const existingCards = slotsContainer.querySelectorAll('[data-compare-slot]');
+    existingCards.forEach(card => card.remove());
+
+    // Add selected vehicles to compare bar
+    let slotIndex = 0;
+    compareList.forEach((vehicleId) => {
+        const vehicle = allVehicles.find(v => v.id === vehicleId);
+        if (!vehicle) return;
+
+        const slot = document.createElement('div');
+        slot.setAttribute('data-compare-slot', slotIndex++);
+        slot.className = 'flex items-center gap-3';
+        slot.innerHTML = `
+            <div class="size-12 rounded bg-slate-200 dark:bg-metallic overflow-hidden border border-action-blue relative group">
+                <img alt="${vehicle.make} ${vehicle.model}" class="w-full h-full object-cover" src="${vehicle.thumbnail}"/>
+                <button onclick="event.stopPropagation(); toggleCompare(${vehicle.id})" class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded">
+                    <span class="material-symbols-outlined text-white text-lg">close</span>
+                </button>
+            </div>
+            <div class="hidden sm:block">
+                <p class="text-[10px] font-black uppercase text-action-blue">Selected</p>
+                <p class="text-xs font-bold truncate max-w-[120px]">${vehicle.make} ${vehicle.model}</p>
+            </div>
+        `;
+        slotsContainer.appendChild(slot);
+    });
+
+    // Add empty slots for remaining comparison spots
+    const remainingSlots = 3 - compareList.length;
+    for (let i = 0; i < remainingSlots; i++) {
+        const emptySlot = document.createElement('div');
+        emptySlot.className = 'size-12 rounded border-2 border-dashed border-slate-300 dark:border-metallic flex items-center justify-center text-slate-400';
+        emptySlot.innerHTML = '<span class="material-symbols-outlined text-sm">add</span>';
+        slotsContainer.appendChild(emptySlot);
+    }
+
+    // Update compare button text and state
+    const compareBtn = document.getElementById('compare-bottom-btn');
+    if (compareBtn) {
+        compareBtn.textContent = `Compare Now (${compareList.length})`;
+        compareBtn.disabled = compareList.length < 2;
+    }
 }
 
 function updateCompareButton() {
