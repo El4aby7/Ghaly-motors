@@ -1,6 +1,8 @@
 
 let allVehicles = [];
 let activeMakeFilter = null;
+let activeBodyStyleFilter = null;
+let activeSortFilter = 'popularity';
 let selectedVehicle = null;
 let compareList = [];
 let favorites = JSON.parse(localStorage.getItem('ghalyMotorsFavorites')) || [];
@@ -544,7 +546,7 @@ function setupEventListeners() {
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
-            filterVehicles(e.target.value, activeMakeFilter);
+            applyAllFilters();
         });
     }
 
@@ -571,9 +573,50 @@ function setupEventListeners() {
                 button.classList.add('bg-primary', 'text-white');
             }
 
-            filterVehicles(searchInput ? searchInput.value : '', activeMakeFilter);
+            applyAllFilters();
         });
     });
+
+    // Body Style Filter
+    const bodyStyleButtons = document.querySelectorAll('button[data-body-style]');
+    bodyStyleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const bodyStyle = button.getAttribute('data-body-style');
+
+            if (activeBodyStyleFilter === bodyStyle) {
+                activeBodyStyleFilter = null;
+                button.classList.remove('bg-primary/10', 'border-primary', 'text-primary');
+                button.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:border-primary', 'border-transparent');
+            } else {
+                // Remove active class from all
+                bodyStyleButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary/10', 'border-primary', 'text-primary');
+                    btn.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:border-primary', 'border-transparent');
+                });
+
+                activeBodyStyleFilter = bodyStyle;
+                button.classList.remove('bg-slate-100', 'dark:bg-surface-dark', 'hover:border-primary', 'border-transparent');
+                button.classList.add('bg-primary/10', 'border-primary', 'text-primary');
+            }
+
+            applyAllFilters();
+        });
+    });
+
+    // Sort Dropdown
+    const sortSelect = document.querySelector('select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            const sortValue = e.target.value;
+            if (sortValue.includes('Low to High')) activeSortFilter = 'price-low-high';
+            else if (sortValue.includes('High to Low')) activeSortFilter = 'price-high-low';
+            else if (sortValue.includes('Fuel Economy')) activeSortFilter = 'fuel-economy';
+            else if (sortValue.includes('Reliability')) activeSortFilter = 'reliability';
+            else activeSortFilter = 'popularity';
+            
+            applyAllFilters();
+        });
+    }
 
     // Reset Button
     const resetBtn = document.getElementById('reset-filters');
@@ -581,12 +624,72 @@ function setupEventListeners() {
         resetBtn.addEventListener('click', () => {
             if (searchInput) searchInput.value = '';
             activeMakeFilter = null;
+            activeBodyStyleFilter = null;
+            activeSortFilter = 'popularity';
+            
             makeFilters.forEach(btn => {
                 btn.classList.remove('bg-primary', 'text-white');
                 btn.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:bg-slate-200', 'dark:hover:bg-metallic');
             });
+
+            bodyStyleButtons.forEach(btn => {
+                btn.classList.remove('bg-primary/10', 'border-primary', 'text-primary');
+                btn.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:border-primary', 'border-transparent');
+            });
+
+            if (sortSelect) sortSelect.value = sortSelect.options[0].value;
+
             renderVehicles(allVehicles);
         });
+    }
+}
+
+function applyAllFilters() {
+    const searchInput = document.getElementById('search-input');
+    const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+
+    let filtered = allVehicles.filter(vehicle => {
+        // Search filter
+        const matchesSearch =
+            vehicle.make.toLowerCase().includes(searchTerm) ||
+            vehicle.model.toLowerCase().includes(searchTerm) ||
+            vehicle.year.toString().includes(searchTerm);
+
+        // Make filter
+        const matchesMake = activeMakeFilter ? vehicle.make === activeMakeFilter : true;
+
+        // Body style filter (map vehicle type to body style)
+        let vehicleBodyStyle = vehicle.type === 'SUV' ? 'SUV' : 
+                               vehicle.type === 'Sedan' ? 'Sedan' :
+                               vehicle.type === 'Truck' ? 'Truck' : 'Coupe';
+        const matchesBodyStyle = activeBodyStyleFilter ? vehicleBodyStyle === activeBodyStyleFilter : true;
+
+        return matchesSearch && matchesMake && matchesBodyStyle;
+    });
+
+    // Apply sorting
+    filtered = sortVehicles(filtered);
+
+    renderVehicles(filtered);
+}
+
+function sortVehicles(vehicles) {
+    const sorted = [...vehicles];
+
+    switch(activeSortFilter) {
+        case 'price-low-high':
+            return sorted.sort((a, b) => a.price - b.price);
+        case 'price-high-low':
+            return sorted.sort((a, b) => b.price - a.price);
+        case 'fuel-economy':
+            // Sort by model name (simulated fuel economy proxy)
+            return sorted.sort((a, b) => a.model.localeCompare(b.model));
+        case 'reliability':
+            // Sort by year (newer = more reliable)
+            return sorted.sort((a, b) => b.year - a.year);
+        case 'popularity':
+        default:
+            return sorted; // Keep original order
     }
 }
 

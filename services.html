@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Services | Ghaly Motors</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ea2a33",
+                        "action-blue": "#007AFF",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#121212",
+                        "surface-dark": "#1c1c1c",
+                        "metallic": "#2a2a2a",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <link href="assets/css/styles.css" rel="stylesheet"/>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen">
+
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-metallic px-4 lg:px-20 py-3">
+    <div class="max-w-[1440px] mx-auto flex items-center justify-between gap-8">
+        <div class="flex items-center gap-8">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="size-8 text-primary">
+                    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h2 class="text-lg font-extrabold tracking-tighter uppercase">Ghaly Motors</h2>
+            </a>
+        </div>
+        <nav class="hidden lg:flex items-center gap-8">
+            <a class="text-slate-600 dark:text-metallic/80 hover:text-slate-900 dark:hover:text-white text-sm font-semibold transition-colors" href="inventory.html">Inventory</a>
+            <a class="text-slate-600 dark:text-metallic/80 hover:text-slate-900 dark:hover:text-white text-sm font-semibold transition-colors" href="offers.html">Offers</a>
+            <a class="text-slate-600 dark:text-metallic/80 hover:text-slate-900 dark:hover:text-white text-sm font-semibold transition-colors" href="financing.html">Financing</a>
+            <a class="text-primary text-sm font-semibold transition-colors" href="services.html">Services</a>
+            <a class="text-slate-600 dark:text-metallic/80 hover:text-slate-900 dark:hover:text-white text-sm font-semibold transition-colors" href="contact.html">Contact</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button class="text-primary hover:text-primary/80 transition-colors">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            <button class="bg-primary text-white px-6 py-2 rounded-lg text-sm font-bold hover:brightness-110 transition-all">Contact Us</button>
+        </div>
+    </div>
+</header>
+
+<!-- Page Title -->
+<section class="max-w-[1440px] mx-auto px-4 lg:px-20 py-16">
+    <h1 class="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-4">Maintenance & Services</h1>
+    <p class="text-slate-600 dark:text-metallic/80 max-w-2xl text-lg">Keep your vehicle in pristine condition with our comprehensive service packages</p>
+</section>
+
+<!-- Service Packages -->
+<section class="max-w-[1440px] mx-auto px-4 lg:px-20 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Basic Package -->
+        <div class="bg-white dark:bg-surface-dark rounded-xl p-8 border border-slate-200 dark:border-metallic hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-6">
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white">Basic</h3>
+                    <p class="text-sm text-slate-600 dark:text-metallic/60">Annual maintenance</p>
+                </div>
+                <span class="text-3xl">🔧</span>
+            </div>
+            <p class="text-3xl font-black text-primary mb-6">L.E2,500<span class="text-sm text-slate-600 dark:text-metallic/60">/year</span></p>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Oil & filter change</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Tire rotation</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Fluid checks</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Filter replacements</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-300 text-xl">circle</span>
+                    <span class="text-sm text-slate-400">Brake inspection</span>
+                </li>
+            </ul>
+            <button onclick="bookService('Basic')" class="w-full border-2 border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">Book Service</button>
+        </div>
+
+        <!-- Premium Package -->
+        <div class="bg-white dark:bg-surface-dark rounded-xl p-8 border-2 border-primary relative overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-xs font-bold rounded-bl-lg">POPULAR</div>
+            <div class="flex items-start justify-between mb-6">
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white">Premium</h3>
+                    <p class="text-sm text-slate-600 dark:text-metallic/60">Semi-annual service</p>
+                </div>
+                <span class="text-3xl">⭐</span>
+            </div>
+            <p class="text-3xl font-black text-primary mb-6">L.E5,000<span class="text-sm text-slate-600 dark:text-metallic/60">/year</span></p>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm font-semibold">Everything in Basic +</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Brake inspection & service</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Battery check</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Suspension inspection</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Free air & water top-up</span>
+                </li>
+            </ul>
+            <button onclick="bookService('Premium')" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:brightness-110 transition-all">Book Service</button>
+        </div>
+
+        <!-- Deluxe Package -->
+        <div class="bg-white dark:bg-surface-dark rounded-xl p-8 border border-slate-200 dark:border-metallic hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-6">
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white">Deluxe</h3>
+                    <p class="text-sm text-slate-600 dark:text-metallic/60">Comprehensive care</p>
+                </div>
+                <span class="text-3xl">👑</span>
+            </div>
+            <p class="text-3xl font-black text-primary mb-6">L.E8,500<span class="text-sm text-slate-600 dark:text-metallic/60">/year</span></p>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm font-semibold">Everything in Premium +</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Free car wash & vacuum</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Interior protection coating</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">Quarterly inspections</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                    <span class="text-sm">24/7 roadside assistance</span>
+                </li>
+            </ul>
+            <button onclick="bookService('Deluxe')" class="w-full border-2 border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">Book Service</button>
+        </div>
+    </div>
+</section>
+
+<!-- Additional Services -->
+<section class="bg-slate-100 dark:bg-surface-dark py-16">
+    <div class="max-w-[1440px] mx-auto px-4 lg:px-20">
+        <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-12">Additional Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white dark:bg-metallic/20 rounded-lg p-6 border border-slate-200 dark:border-metallic">
+                <div class="text-3xl mb-3">🛞</div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-2">Tire Services</h3>
+                <p class="text-sm text-slate-600 dark:text-metallic/60">Tire replacement, alignment, and balancing</p>
+            </div>
+            <div class="bg-white dark:bg-metallic/20 rounded-lg p-6 border border-slate-200 dark:border-metallic">
+                <div class="text-3xl mb-3">🔋</div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-2">Battery Services</h3>
+                <p class="text-sm text-slate-600 dark:text-metallic/60">Battery replacement and charging services</p>
+            </div>
+            <div class="bg-white dark:bg-metallic/20 rounded-lg p-6 border border-slate-200 dark:border-metallic">
+                <div class="text-3xl mb-3">🔧</div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-2">Repairs</h3>
+                <p class="text-sm text-slate-600 dark:text-metallic/60">All mechanical repairs covered</p>
+            </div>
+            <div class="bg-white dark:bg-metallic/20 rounded-lg p-6 border border-slate-200 dark:border-metallic">
+                <div class="text-3xl mb-3">🧼</div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-2">Detailing</h3>
+                <p class="text-sm text-slate-600 dark:text-metallic/60">Interior and exterior detailing services</p>
+            </div>
+            <div class="bg-white dark:bg-metallic/20 rounded-lg p-6 border border-slate-200 dark:border-metallic">
+                <div class="text-3xl mb-3">🛡️</div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-2">Paint Protection</h3>
+                <p class="text-sm text-slate-600 dark:text-metallic/60">Ceramic coating and paint protection</p>
+            </div>
+            <div class="bg-white dark:bg-metallic/20 rounded-lg p-6 border border-slate-200 dark:border-metallic">
+                <div class="text-3xl mb-3">🚗</div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-2">Pickup & Delivery</h3>
+                <p class="text-sm text-slate-600 dark:text-metallic/60">Free service center pickup and delivery</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Warranty Section -->
+<section class="max-w-[1440px] mx-auto px-4 lg:px-20 py-16">
+    <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-8">Warranty Coverage</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white dark:bg-surface-dark rounded-xl p-8 border border-slate-200 dark:border-metallic">
+            <h3 class="text-xl font-black text-slate-900 dark:text-white mb-4">Powertrain Warranty</h3>
+            <p class="text-slate-600 dark:text-metallic/60 mb-4">Covers engine, transmission, and drivetrain components</p>
+            <p class="text-primary font-bold">Up to 5 years or 60,000 km</p>
+        </div>
+        <div class="bg-white dark:bg-surface-dark rounded-xl p-8 border border-slate-200 dark:border-metallic">
+            <h3 class="text-xl font-black text-slate-900 dark:text-white mb-4">Comprehensive Warranty</h3>
+            <p class="text-slate-600 dark:text-metallic/60 mb-4">Covers all parts except wear items</p>
+            <p class="text-primary font-bold">Up to 3 years or 100,000 km</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-slate-100 dark:bg-surface-dark py-16 mt-12">
+    <div class="max-w-[1440px] mx-auto px-4 lg:px-20 text-center">
+        <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-4">Schedule Your Service Today</h2>
+        <p class="text-slate-600 dark:text-metallic/80 max-w-2xl mx-auto mb-8">Keep your vehicle running smoothly with professional maintenance</p>
+        <a href="contact.html" class="inline-block bg-primary text-white px-8 py-3 rounded-lg font-bold hover:brightness-110 transition-all">Book Appointment</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-100 dark:bg-metallic/20 border-t border-slate-200 dark:border-metallic mt-20">
+    <div class="max-w-[1440px] mx-auto px-4 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-12 py-12">
+        <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-3 text-metallic mb-8">
+                <span class="material-symbols-outlined text-primary text-3xl">directions_car</span>
+                <h2 class="text-xl font-black tracking-tighter uppercase">Ghaly Motors</h2>
+            </div>
+            <p class="text-metallic/40 max-w-sm mb-8 leading-relaxed">Defining the standard of excellence across all automotive segments.</p>
+        </div>
+        <div>
+            <h4 class="font-black text-slate-900 dark:text-white mb-4 uppercase text-sm tracking-widest">Quick Links</h4>
+            <ul class="space-y-2 text-sm text-metallic/60">
+                <li><a href="inventory.html" class="hover:text-primary transition-colors">Inventory</a></li>
+                <li><a href="offers.html" class="hover:text-primary transition-colors">Offers</a></li>
+                <li><a href="financing.html" class="hover:text-primary transition-colors">Financing</a></li>
+                <li><a href="services.html" class="hover:text-primary transition-colors">Services</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-black text-slate-900 dark:text-white mb-4 uppercase text-sm tracking-widest">Contact</h4>
+            <ul class="space-y-2 text-sm text-metallic/60">
+                <li>+20 123 456 7890</li>
+                <li>info@ghalymotors.com</li>
+                <li>Cairo, Egypt</li>
+            </ul>
+        </div>
+    </div>
+    <div class="border-t border-slate-200 dark:border-metallic px-4 lg:px-20 py-6">
+        <div class="max-w-[1440px] mx-auto flex items-center justify-between text-sm text-metallic/60">
+            <p>© 2024 Ghaly Motors. All Rights Reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/config.js"></script>
+<script src="assets/js/utils.js"></script>
+<script>
+function bookService(packageType) {
+    showToast(`${packageType} service package selected. Redirecting to booking...`);
+    setTimeout(() => {
+        window.location.href = 'contact.html';
+    }, 1500);
+}
+</script>
+</body>
+</html>
