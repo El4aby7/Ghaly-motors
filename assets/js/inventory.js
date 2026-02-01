@@ -7,8 +7,8 @@ let selectedVehicle = null;
 let compareList = [];
 let favorites = JSON.parse(localStorage.getItem('ghalyMotorsFavorites')) || [];
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadVehicles();
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadVehicles();
     setupEventListeners();
     createModals();
 });
@@ -599,61 +599,62 @@ function createModals() {
 
 
 function setupEventListeners() {
+    console.log('Setting up event listeners...');
+    
     // Search Filter
     const searchInput = document.getElementById('search-input');
+    console.log('Search input found:', searchInput);
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
+            console.log('Search input:', e.target.value);
             applyAllFilters();
         });
     }
 
-    // Make Filter
+    // Make Filter - These are <div> elements with class "filter-make"
     const makeFilters = document.querySelectorAll('.filter-make');
-    makeFilters.forEach(button => {
-        button.addEventListener('click', () => {
-            const make = button.getAttribute('data-make');
+    console.log('Make filters found:', makeFilters.length);
+    makeFilters.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            const make = btn.getAttribute('data-make');
+            console.log('Make filter clicked:', make);
 
-            // Toggle active state logic
             if (activeMakeFilter === make) {
-                activeMakeFilter = null; // Deselect
-                button.classList.remove('bg-primary', 'text-white');
-                button.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:bg-slate-200', 'dark:hover:bg-metallic');
+                activeMakeFilter = null;
+                btn.classList.remove('bg-primary', 'text-white');
+                btn.classList.add('bg-slate-100', 'dark:bg-surface-dark');
             } else {
-                // Remove active class from all
-                makeFilters.forEach(btn => {
-                    btn.classList.remove('bg-primary', 'text-white');
-                    btn.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:bg-slate-200', 'dark:hover:bg-metallic');
+                makeFilters.forEach(button => {
+                    button.classList.remove('bg-primary', 'text-white');
+                    button.classList.add('bg-slate-100', 'dark:bg-surface-dark');
                 });
-
-                activeMakeFilter = make; // Select new
-                button.classList.remove('bg-slate-100', 'dark:bg-surface-dark', 'hover:bg-slate-200', 'dark:hover:bg-metallic');
-                button.classList.add('bg-primary', 'text-white');
+                activeMakeFilter = make;
+                btn.classList.add('bg-primary', 'text-white');
             }
 
             applyAllFilters();
         });
     });
 
-    // Body Style Filter
+    // Body Style Filter - These are <button> elements with data-body-style
     const bodyStyleButtons = document.querySelectorAll('button[data-body-style]');
-    bodyStyleButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const bodyStyle = button.getAttribute('data-body-style');
+    console.log('Body style buttons found:', bodyStyleButtons.length);
+    bodyStyleButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const bodyStyle = btn.getAttribute('data-body-style');
+            console.log('Body style clicked:', bodyStyle);
 
             if (activeBodyStyleFilter === bodyStyle) {
                 activeBodyStyleFilter = null;
-                button.classList.remove('bg-primary/10', 'border-primary', 'text-primary');
-                button.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:border-primary', 'border-transparent');
+                btn.classList.remove('bg-primary/10', 'border-primary', 'text-primary');
+                btn.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'border-transparent');
             } else {
-                // Remove active class from all
-                bodyStyleButtons.forEach(btn => {
-                    btn.classList.remove('bg-primary/10', 'border-primary', 'text-primary');
-                    btn.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:border-primary', 'border-transparent');
+                bodyStyleButtons.forEach(button => {
+                    button.classList.remove('bg-primary/10', 'border-primary', 'text-primary');
+                    button.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'border-transparent');
                 });
-
                 activeBodyStyleFilter = bodyStyle;
-                button.classList.remove('bg-slate-100', 'dark:bg-surface-dark', 'hover:border-primary', 'border-transparent');
-                button.classList.add('bg-primary/10', 'border-primary', 'text-primary');
+                btn.classList.add('bg-primary/10', 'border-primary', 'text-primary');
             }
 
             applyAllFilters();
@@ -662,9 +663,11 @@ function setupEventListeners() {
 
     // Sort Dropdown
     const sortSelect = document.querySelector('select');
+    console.log('Sort select found:', sortSelect);
     if (sortSelect) {
         sortSelect.addEventListener('change', (e) => {
             const sortValue = e.target.value;
+            console.log('Sort value changed:', sortValue);
             if (sortValue.includes('Low to High')) activeSortFilter = 'price-low-high';
             else if (sortValue.includes('High to Low')) activeSortFilter = 'price-high-low';
             else if (sortValue.includes('Fuel Economy')) activeSortFilter = 'fuel-economy';
@@ -677,8 +680,10 @@ function setupEventListeners() {
 
     // Reset Button
     const resetBtn = document.getElementById('reset-filters');
+    console.log('Reset button found:', resetBtn);
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
+            console.log('Reset filters clicked');
             if (searchInput) searchInput.value = '';
             activeMakeFilter = null;
             activeBodyStyleFilter = null;
@@ -686,12 +691,12 @@ function setupEventListeners() {
             
             makeFilters.forEach(btn => {
                 btn.classList.remove('bg-primary', 'text-white');
-                btn.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:bg-slate-200', 'dark:hover:bg-metallic');
+                btn.classList.add('bg-slate-100', 'dark:bg-surface-dark');
             });
 
             bodyStyleButtons.forEach(btn => {
                 btn.classList.remove('bg-primary/10', 'border-primary', 'text-primary');
-                btn.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'hover:border-primary', 'border-transparent');
+                btn.classList.add('bg-slate-100', 'dark:bg-surface-dark', 'border-transparent');
             });
 
             if (sortSelect) sortSelect.value = sortSelect.options[0].value;
@@ -699,6 +704,8 @@ function setupEventListeners() {
             renderVehicles(allVehicles);
         });
     }
+
+    console.log('Event listeners setup complete');
 }
 
 function applyAllFilters() {
