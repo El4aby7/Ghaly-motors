@@ -96,23 +96,21 @@ function openVehicleDetails(vehicleId) {
     const modal = document.getElementById('vehicle-modal') || createVehicleModal();
     updateModalContent();
     modal.classList.remove('hidden');
-    modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
 }
 
 function createVehicleModal() {
     const modal = document.createElement('div');
     modal.id = 'vehicle-modal';
-    modal.className = 'hidden fixed inset-0 bg-black/50 z-50 overflow-y-auto backdrop-blur-sm';
+    modal.className = 'hidden fixed inset-0 z-50 overflow-hidden';
     modal.innerHTML = `
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white dark:bg-surface-dark rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
-                <button onclick="closeVehicleModal()" class="absolute top-4 right-4 p-2 hover:bg-slate-100 dark:hover:bg-metallic rounded-lg z-10">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-                
-                <div id="modal-content"></div>
-            </div>
+        <div class="fixed inset-0 bg-black/30 backdrop-blur-sm" onclick="closeVehicleModal()"></div>
+        <div class="fixed right-0 top-0 h-full w-full md:w-2/3 lg:w-1/2 bg-white dark:bg-surface-dark overflow-y-auto shadow-2xl">
+            <button onclick="closeVehicleModal()" class="sticky top-4 right-4 p-2 hover:bg-slate-100 dark:hover:bg-metallic rounded-lg float-right">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            
+            <div id="modal-content" class="clear-both"></div>
         </div>
     `;
     document.body.appendChild(modal);
@@ -193,7 +191,6 @@ function closeVehicleModal() {
     const modal = document.getElementById('vehicle-modal');
     if (modal) {
         modal.classList.add('hidden');
-        modal.classList.remove('flex');
         document.body.style.overflow = 'auto';
     }
 }
